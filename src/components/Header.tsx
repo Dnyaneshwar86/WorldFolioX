@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { useApp } from '@/lib/store';
 import { LANGUAGES } from '@/lib/i18n-dictionary';
 import { PERSONAS } from '@/lib/geo-context';
@@ -72,6 +73,16 @@ export default function Header() {
 
         {/* Adaptive Context Controls & Settings */}
         <div className="flex items-center flex-wrap gap-2">
+          {/* Pitch Deck Presentation Link */}
+          <Link
+            href="/pitch"
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-200 border border-emerald-500/40 text-xs font-semibold transition-all hover:shadow-lg hover:shadow-emerald-500/20"
+            title="Open Live Pitch Deck"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+            <span className="hidden sm:inline">Pitch Deck</span>
+          </Link>
+
           {/* AI Greeting Video Trigger */}
           <button
             onClick={() => setIsVideoGreetingOpen(true)}
