@@ -1,21 +1,25 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '@/lib/store';
 import { SERVICE_TIERS } from '@/lib/data';
-import { CheckCircle2, Zap, ShieldCheck, ArrowRight, CreditCard, QrCode } from 'lucide-react';
+import { CheckCircle2, Zap, ShieldCheck, ArrowRight, CreditCard, QrCode, RefreshCw } from 'lucide-react';
+import { CurrencyCode } from '@/lib/types';
 
 export default function PricingSection() {
   const { persona, dict, setIsPaymentOpen, setSelectedTierId } = useApp();
+  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyCode | 'AUTO'>('AUTO');
+
+  const activeCurrency = selectedCurrency === 'AUTO' ? persona.currency : selectedCurrency;
 
   const formatPrice = (inr: number, usd: number) => {
-    if (persona.currency === 'INR') {
+    if (activeCurrency === 'INR') {
       return `₹${inr.toLocaleString('en-IN')}`;
-    } else if (persona.currency === 'EUR') {
+    } else if (activeCurrency === 'EUR') {
       return `€${Math.round(usd * 0.92).toLocaleString('en-US')}`;
-    } else if (persona.currency === 'GBP') {
+    } else if (activeCurrency === 'GBP') {
       return `£${Math.round(usd * 0.78).toLocaleString('en-US')}`;
-    } else if (persona.currency === 'JPY') {
+    } else if (activeCurrency === 'JPY') {
       return `¥${Math.round(usd * 155).toLocaleString('en-US')}`;
     }
     return `$${usd.toLocaleString('en-US')}`;
@@ -26,14 +30,38 @@ export default function PricingSection() {
       <div className="text-center space-y-3">
         <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold">
           <Zap className="w-3.5 h-3.5" />
-          <span>Dynamic Currency Pricing • {persona.currency}</span>
+          <span>Dynamic Currency Pricing • {activeCurrency}</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
           {dict.pricingHeader}
         </h2>
         <p className="text-slate-400 text-sm max-w-xl mx-auto">
-          Tailored rates auto-converted for {persona.country} ({persona.currency}). Instant booking with local payment gateways.
+          Tailored rates auto-converted for {persona.country} ({activeCurrency}). Instant booking with local payment gateways.
         </p>
+
+        {/* Feature 3: Live Currency Switcher Toggle Bar */}
+        <div className="flex items-center justify-center space-x-2 pt-3">
+          <span className="text-xs text-slate-400 font-mono flex items-center space-x-1">
+            <RefreshCw className="w-3 h-3 text-emerald-400" />
+            <span>Currency Switcher:</span>
+          </span>
+          <div className="p-1 rounded-xl bg-slate-900 border border-slate-800 flex space-x-1 text-xs font-mono">
+            {(['AUTO', 'INR', 'USD', 'EUR'] as const).map((curr) => (
+              <button
+                key={curr}
+                type="button"
+                onClick={() => setSelectedCurrency(curr)}
+                className={`px-3 py-1 rounded-lg transition-all ${
+                  selectedCurrency === curr
+                    ? 'bg-emerald-500 text-slate-950 font-bold shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                {curr === 'AUTO' ? `Auto (${persona.currency})` : curr}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Tiers Grid */}
@@ -89,7 +117,7 @@ export default function PricingSection() {
                     : 'glass-button text-white hover:border-emerald-500'
                 }`}
               >
-                {persona.currency === 'INR' ? (
+                {activeCurrency === 'INR' ? (
                   <>
                     <QrCode className="w-4 h-4" />
                     <span>{dict.payWithUpi}</span>

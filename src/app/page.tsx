@@ -11,6 +11,7 @@ import ArBusinessCard from '@/components/ArBusinessCard';
 import ProjectsShowcase from '@/components/ProjectsShowcase';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import PricingSection from '@/components/PricingSection';
+import ClientRoiCalculator from '@/components/ClientRoiCalculator';
 import ContactSection from '@/components/ContactSection';
 import ResumeDownloader from '@/components/ResumeDownloader';
 import VideoGreetingModal from '@/components/VideoGreetingModal';
@@ -40,6 +41,7 @@ export default function Home() {
       <ScrollStoryTimeline />
       <CompetitorVanquisher />
       <ArBusinessCard />
+      <ClientRoiCalculator />
       <PricingSection />
       <ContactSection />
       <Footer />
