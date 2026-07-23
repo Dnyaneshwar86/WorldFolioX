@@ -4,29 +4,32 @@ import React, { useState } from 'react';
 import { useApp } from '@/lib/store';
 import { PROJECTS } from '@/lib/data';
 import { RegionId } from '@/lib/types';
-import { ExternalLink, Code2, Sparkles, CheckCircle2, Layers, Search, Github, FolderGit2 } from 'lucide-react';
+import { ExternalLink, Code2, Sparkles, CheckCircle2, Layers, Search, Github, FolderGit2, Star, Pin } from 'lucide-react';
+
+export const PINNED_FLAGSHIP_REPOS = [
+  { name: 'WorldFolioX', role: '🌐 Smart Portfolio + ClientFlow CRM Engine', tag: 'Next.js 14 / TypeScript', isFlagship: true },
+  { name: 'DEVDASH-120', role: '💻 SaaS Source Code & Digital Store Engine', tag: 'Next.js 14 / Realtime', isFlagship: true },
+  { name: 'hirva-mala', role: '🌿 Agro-Tech & Organic Produce Portal (Live)', tag: 'React / PWA / AgroTech', isFlagship: true },
+  { name: 'digital-visiting-card', role: '📱 Smart Digital vCard & AR Badge Generator', tag: '3D WebGL / vCard', isFlagship: true },
+  { name: 'dnyaneshwar.dev', role: '🌍 Personal Domain Identity Portfolio Code', tag: 'Portfolio / Identity', isFlagship: true },
+  { name: 'PixelCraft', role: '🎨 Creative UI Design & Canvas Editor', tag: 'Canvas / PWA', isFlagship: true },
+  { name: 'omnivibe', role: '🤖 AI Neural Audio & Web Platform Engine', tag: 'Web Audio / WebGL', isFlagship: true },
+  { name: 'AI-TOOL-', role: '🛠️ All-in-One AI Developer Toolkit', tag: 'AI / Automation', isFlagship: true },
+  { name: 'dnyaneshwar', role: '👤 GitHub Profile Special README Repo', tag: 'GitHub Profile', isFlagship: true },
+];
 
 export const GITHUB_REPOS = [
-  { name: 'WorldFolioX', desc: 'Hyper-Adaptive AI Portfolio & Digital Agency CRM', tag: 'Next.js 14 / TypeScript' },
-  { name: 'hirva-mala', desc: 'Eco-Agro Organic Farming Direct Portal', tag: 'React / PWA / AgroTech' },
-  { name: 'digital-visiting-card', desc: 'Smart 3D vCard & AR Badge Generator', tag: '3D WebGL / vCard' },
-  { name: 'DEVDASH-120', desc: '120-Minute Developer Launch Workspace', tag: 'Next.js 14 / Realtime' },
-  { name: 'Shrigonda-Cricket-Arena', desc: 'Live Cricket Tournament Scoring Dashboard', tag: 'React / Live Score' },
-  { name: 'Civil-Diplomaai', desc: 'AI Assistant for Civil Engineering Diploma', tag: 'EdTech / AI' },
-  { name: 'civil-god-mode', desc: 'Advanced Civil Engineering Site & Formula Solver', tag: 'Civil AI / Math' },
-  { name: 'omnipura-ai-core', desc: 'Multi-Agent LLM Orchestration Engine', tag: 'Python / Agentic AI' },
-  { name: 'omnivibe', desc: 'Neural Audio & Vibe Synthesis Studio', tag: 'Web Audio / WebGL' },
-  { name: 'PixelCraft', desc: 'Browser Creative Image Editing Suite', tag: 'Canvas / PWA' },
-  { name: 'focus.today', desc: 'Gamified Deep Focus & Productivity Timer', tag: 'LocalFirst / PWA' },
-  { name: 'mahaseva', desc: 'MahaSeva Digital Citizen Services Portal', tag: 'GovTech / i18n' },
-  { name: 'starlight', desc: 'Cosmic Cyberpunk Design System', tag: 'Tailwind / Glass' },
-  { name: 'dnyaneshwar.dev', desc: 'Personal Developer Identity Hub', tag: 'Portfolio / Identity' },
-  { name: 'Eklavya-2.0-.-', desc: 'Adaptive Learning AI Platform', tag: 'EdTech / AI' },
-  { name: 'Chrono-hacks2.0', desc: 'Hackathon Timer & Team Sync Console', tag: 'Realtime / Timer' },
-  { name: 'Photo-editor-', desc: 'Online Photo Filters & Web Processor', tag: 'Canvas / Image' },
-  { name: '-DNYANESHWAR-DIGITAL-MARKETER', desc: 'Digital Marketing & Growth Engine', tag: 'Growth / SEO' },
-  { name: 'DNYANESHWARCSC', desc: 'Common Service Center Digital Kiosk', tag: 'Citizen Services' },
-  { name: 'Civil-Diploma-Word-AI', desc: 'AI Civil Document & Estimation Generator', tag: 'AI Docs / Civil' },
+  ...PINNED_FLAGSHIP_REPOS,
+  { name: 'Shrigonda-Cricket-Arena', role: 'Live Cricket Tournament Scoring Dashboard', tag: 'React / Live Score', isFlagship: false },
+  { name: 'Civil-Diploma-AI', role: 'AI Assistant for Civil Engineering Diploma', tag: 'EdTech / AI', isFlagship: false },
+  { name: 'civil-god-mode', role: 'Advanced Civil Engineering Site Solver', tag: 'Civil AI / Math', isFlagship: false },
+  { name: 'omnipura-ai-core', role: 'Multi-Agent LLM Orchestration Engine', tag: 'Python / Agentic AI', isFlagship: false },
+  { name: 'focus.today', role: 'Gamified Deep Focus Timer', tag: 'LocalFirst / PWA', isFlagship: false },
+  { name: 'mahaseva', role: 'MahaSeva Digital Citizen Portal', tag: 'GovTech / i18n', isFlagship: false },
+  { name: 'starlight', role: 'Cosmic Cyberpunk Design System', tag: 'Tailwind / Glass', isFlagship: false },
+  { name: 'Eklavya-2.0-.-', role: 'Adaptive Learning AI Platform', tag: 'EdTech / AI', isFlagship: false },
+  { name: 'Chrono-hacks2.0', role: 'Hackathon Timer & Sync Console', tag: 'Realtime / Timer', isFlagship: false },
+  { name: 'DNYANESHWARCSC', role: 'Common Service Center Kiosk', tag: 'Citizen Services', isFlagship: false },
 ];
 
 export default function ProjectsShowcase() {
@@ -41,7 +44,7 @@ export default function ProjectsShowcase() {
   });
 
   const filteredRepos = GITHUB_REPOS.filter(
-    (r) => r.name.toLowerCase().includes(repoSearch.toLowerCase()) || r.desc.toLowerCase().includes(repoSearch.toLowerCase())
+    (r) => r.name.toLowerCase().includes(repoSearch.toLowerCase()) || r.role.toLowerCase().includes(repoSearch.toLowerCase())
   );
 
   return (
@@ -144,16 +147,18 @@ export default function ProjectsShowcase() {
         ))}
       </div>
 
-      {/* GitHub Repositories Vault */}
+      {/* Pinned 9 Flagship Repositories Spotlight */}
       <div className="pt-10 space-y-6">
-        <div className="glass-panel p-6 rounded-3xl border border-white/10 space-y-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="glass-panel p-6 rounded-3xl border border-amber-500/40 space-y-6 shadow-2xl">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
             <div className="space-y-1">
               <div className="flex items-center space-x-2">
-                <Github className="w-5 h-5 text-emerald-400" />
-                <h3 className="text-lg font-bold text-white">Full GitHub Repositories Vault (Dnyaneshwar86)</h3>
+                <Pin className="w-5 h-5 text-amber-400 fill-amber-400 animate-bounce" />
+                <h3 className="text-xl font-black text-white tracking-wide">
+                  9 Core Flagship Repositories (Pinned)
+                </h3>
               </div>
-              <p className="text-xs text-slate-400 font-mono">Explore 35+ open-source repositories and live deployments</p>
+              <p className="text-xs text-amber-300/80 font-mono">Dnyaneshwar's top 9 curated production codebases</p>
             </div>
 
             <div className="relative w-full sm:w-72">
@@ -161,33 +166,52 @@ export default function ProjectsShowcase() {
                 type="text"
                 value={repoSearch}
                 onChange={(e) => setRepoSearch(e.target.value)}
-                placeholder="Search 35+ GitHub Repositories..."
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 pl-9 text-xs text-white focus:outline-none focus:border-emerald-500 font-mono"
+                placeholder="Search Repositories..."
+                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 pl-9 text-xs text-white focus:outline-none focus:border-amber-500 font-mono"
               />
               <Search className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-2.5" />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredRepos.map((repo, idx) => (
               <a
                 key={idx}
                 href={`https://github.com/Dnyaneshwar86/${repo.name}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 hover:border-emerald-500/50 transition-all hover:-translate-y-1 space-y-2 group"
+                className={`p-4 rounded-2xl border transition-all hover:-translate-y-1 space-y-2 group ${
+                  repo.isFlagship
+                    ? 'bg-amber-950/20 border-amber-500/40 hover:border-amber-400 shadow-lg shadow-amber-500/10'
+                    : 'bg-slate-950/80 border-slate-800/80 hover:border-emerald-500/50'
+                }`}
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-1.5 text-xs font-bold text-white group-hover:text-emerald-400 transition-colors">
-                    <FolderGit2 className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="truncate max-w-[140px]">{repo.name}</span>
+                  <div className="flex items-center space-x-1.5 text-xs font-bold text-white group-hover:text-amber-400 transition-colors">
+                    {repo.isFlagship ? (
+                      <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                    ) : (
+                      <FolderGit2 className="w-3.5 h-3.5 text-emerald-400" />
+                    )}
+                    <span className="truncate max-w-[150px]">{repo.name}</span>
                   </div>
-                  <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-emerald-400" />
+                  <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-amber-400" />
                 </div>
-                <p className="text-[11px] text-slate-400 line-clamp-2">{repo.desc}</p>
-                <span className="inline-block px-2 py-0.5 rounded bg-slate-900 text-emerald-300 border border-emerald-500/20 text-[9px] font-mono font-bold">
-                  {repo.tag}
-                </span>
+                <p className="text-[11px] text-slate-300 font-sans line-clamp-2 leading-relaxed">{repo.role}</p>
+                <div className="flex items-center justify-between pt-1">
+                  <span
+                    className={`inline-block px-2 py-0.5 rounded text-[9px] font-mono font-bold ${
+                      repo.isFlagship
+                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                        : 'bg-slate-900 text-emerald-300 border border-emerald-500/20'
+                    }`}
+                  >
+                    {repo.tag}
+                  </span>
+                  {repo.isFlagship && (
+                    <span className="text-[9px] text-amber-400 font-mono font-bold uppercase tracking-wider">★ Flagship</span>
+                  )}
+                </div>
               </a>
             ))}
           </div>
