@@ -38,7 +38,7 @@ export default function ContactSection() {
           {dict.contactHeader}
         </h2>
         <p className="text-slate-400 text-sm max-w-xl mx-auto">
-          Choose your preferred channel: WhatsApp, WebRTC Call, Voice Note, or Form.
+          Choose your preferred channel: WhatsApp, Phone Dialer, Voice Note, or Form.
         </p>
       </div>
 
@@ -48,38 +48,49 @@ export default function ContactSection() {
           <div className="p-6 rounded-3xl glass-panel border border-white/10 space-y-4">
             <h3 className="text-xl font-bold text-white">Instant Channels for {persona.country}</h3>
             
+            {/* Direct WhatsApp Link */}
             <a
-              href={`https://wa.me/${persona.whatsappNumber}`}
+              href={`https://wa.me/919370983235?text=Hello%20Dnyaneshwar,%20I%20visited%20WorldFolio%20X!`}
               target="_blank"
-              rel="noreferrer"
-              className="flex items-center space-x-4 p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 hover:bg-emerald-900/40 transition-colors"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-4 p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 hover:bg-emerald-900/40 transition-all hover:scale-[1.02]"
             >
               <div className="p-3 rounded-xl bg-emerald-500 text-slate-950 font-bold">
                 <MessageSquare className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-white">Direct WhatsApp & Email</h4>
-                <p className="text-xs text-emerald-400 font-mono">{persona.whatsappNumber} • hello@worldfolio.x</p>
+                <h4 className="text-sm font-bold text-white">Direct WhatsApp Message</h4>
+                <p className="text-xs text-emerald-400 font-mono">+91 9370983235</p>
               </div>
             </a>
 
-            <div className="p-4 rounded-2xl bg-indigo-950/40 border border-indigo-500/40 flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                <div className="p-3 rounded-xl bg-indigo-500 text-white">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-white">Browser WebRTC Call</h4>
-                  <p className="text-xs text-indigo-300">Direct encrypted browser call</p>
-                </div>
+            {/* Direct Phone Dialer Link */}
+            <a
+              href="tel:+919370983235"
+              className="flex items-center space-x-4 p-4 rounded-2xl bg-indigo-950/40 border border-indigo-500/40 hover:bg-indigo-900/40 transition-all hover:scale-[1.02]"
+            >
+              <div className="p-3 rounded-xl bg-indigo-500 text-white font-bold">
+                <Phone className="w-6 h-6" />
               </div>
-              <button
-                onClick={() => toast.success('Initializing WebRTC P2P Call connection...')}
-                className="px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-semibold hover:bg-indigo-500"
-              >
-                Call Now
-              </button>
-            </div>
+              <div>
+                <h4 className="text-sm font-bold text-white">Direct Phone Call / Dialer</h4>
+                <p className="text-xs text-indigo-300 font-mono">+91 9370983235</p>
+              </div>
+            </a>
+
+            {/* Direct Email Link */}
+            <a
+              href="mailto:hello@worldfolio.x"
+              className="flex items-center space-x-4 p-4 rounded-2xl bg-blue-950/40 border border-blue-500/40 hover:bg-blue-900/40 transition-all hover:scale-[1.02]"
+            >
+              <div className="p-3 rounded-xl bg-blue-500 text-white font-bold">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-white">Official Email</h4>
+                <p className="text-xs text-blue-300 font-mono">hello@worldfolio.x</p>
+              </div>
+            </a>
 
             {/* Voice Message Note Recorder */}
             <div className="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/60 space-y-3">
