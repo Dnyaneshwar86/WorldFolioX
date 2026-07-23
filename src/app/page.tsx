@@ -17,6 +17,7 @@ import VideoGreetingModal from '@/components/VideoGreetingModal';
 import PaymentModal from '@/components/PaymentModal';
 import VoiceController from '@/components/VoiceController';
 import AiChatbot from '@/components/AiChatbot';
+import QuantumSpecialEffects from '@/components/QuantumSpecialEffects';
 import Footer from '@/components/Footer';
 import { Toaster } from 'react-hot-toast';
 
@@ -24,11 +25,16 @@ export default function Home() {
   return (
     <main className="min-h-screen relative text-slate-100 selection:bg-emerald-500 selection:text-slate-950">
       <Toaster position="top-right" />
+      <QuantumSpecialEffects />
       <OfflineLiteBanner />
       <Header />
-      <HeroSection />
+      <div id="hero">
+        <HeroSection />
+      </div>
       <ResumeDownloader />
-      <LocalTrustMap />
+      <div id="trust-map">
+        <LocalTrustMap />
+      </div>
       <ProjectsShowcase />
       <TestimonialsSection />
       <ScrollStoryTimeline />
