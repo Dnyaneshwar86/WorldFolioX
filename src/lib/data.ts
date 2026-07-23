@@ -2,6 +2,17 @@ import { ProjectItem, TestimonialItem, ServiceTier } from './types';
 
 export const PROJECTS: ProjectItem[] = [
   {
+    id: 'p0',
+    title: 'हिरवा माळा (Hirva Mala) – Eco-Agro Green Farm Portal',
+    category: 'AgroTech & Direct Produce Market',
+    description: 'Modern Eco-Agro digital platform showcasing organic farming, green harvests, and direct farmer-to-consumer sustainable agriculture.',
+    region: 'in_rural',
+    tags: ['React', 'AgroTech', 'PWA', 'Direct Organic Market', 'Marathi/English'],
+    metrics: '🌾 100% Organic Direct Farm Connectivity | Live Deployment',
+    image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80',
+    liveUrl: 'https://dnyaneshwar86.github.io/hirva-mala/',
+  },
+  {
     id: 'p1',
     title: 'GraminBazaar – Rural Direct E-Commerce Platform',
     category: 'Fullstack & PWA',
