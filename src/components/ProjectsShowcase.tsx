@@ -7,14 +7,14 @@ import { RegionId } from '@/lib/types';
 import { ExternalLink, Code2, Sparkles, CheckCircle2, Layers, Search, Github, FolderGit2, Star, Pin } from 'lucide-react';
 
 export const PINNED_FLAGSHIP_REPOS = [
-  { name: 'WorldFolioX', role: '🌐 Smart Portfolio + ClientFlow CRM Engine', tag: 'Next.js 14 / TypeScript', isFlagship: true },
-  { name: 'DEVDASH-120', role: '💻 SaaS Source Code & Digital Store Engine', tag: 'Next.js 14 / Realtime', isFlagship: true },
-  { name: 'hirva-mala', role: '🌿 Agro-Tech & Organic Produce Portal (Live)', tag: 'React / PWA / AgroTech', isFlagship: true },
   { name: 'digital-visiting-card', role: '📱 Smart Digital vCard & AR Badge Generator', tag: '3D WebGL / vCard', isFlagship: true },
-  { name: 'dnyaneshwar.dev', role: '🌍 Personal Domain Identity Portfolio Code', tag: 'Portfolio / Identity', isFlagship: true },
   { name: 'PixelCraft', role: '🎨 Creative UI Design & Canvas Editor', tag: 'Canvas / PWA', isFlagship: true },
   { name: 'omnivibe', role: '🤖 AI Neural Audio & Web Platform Engine', tag: 'Web Audio / WebGL', isFlagship: true },
   { name: 'AI-TOOL-', role: '🛠️ All-in-One AI Developer Toolkit', tag: 'AI / Automation', isFlagship: true },
+  { name: 'hirva-mala', role: '🌿 Agro-Tech & Organic Produce Portal (Live)', tag: 'React / PWA / AgroTech', isFlagship: true },
+  { name: 'dnyaneshwar.dev', role: '🌍 Personal Domain Identity Portfolio Code', tag: 'Portfolio / Identity', isFlagship: true },
+  { name: 'DEVDASH-120', role: '💻 SaaS Source Code & Digital Store Engine', tag: 'Next.js 14 / Realtime', isFlagship: true },
+  { name: 'WorldFolioX', role: '🌐 Smart Portfolio + ClientFlow CRM Engine', tag: 'Next.js 14 / TypeScript', isFlagship: true },
   { name: 'dnyaneshwar', role: '👤 GitHub Profile Special README Repo', tag: 'GitHub Profile', isFlagship: true },
 ];
 
