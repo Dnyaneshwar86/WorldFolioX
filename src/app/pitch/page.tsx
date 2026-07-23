@@ -6,32 +6,30 @@ import {
   ChevronLeft,
   ChevronRight,
   Share2,
-  Zap,
-  Globe,
-  Clock,
-  ShieldCheck,
   Sparkles,
-  CheckCircle2,
-  QrCode,
-  Mail,
-  Phone,
-  ArrowRight,
-  Layers,
-  Award,
-  DollarSign,
-  Cpu,
+  Globe,
   TrendingUp,
-  X,
+  Award,
+  Layers,
+  Phone,
+  Mail,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+  PieChart,
+  MapPin,
+  Clock,
+  ExternalLink,
 } from 'lucide-react';
 import Link from 'next/link';
 import BuildTimer from '@/components/BuildTimer';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function PitchDeckPage() {
-  const { persona, dict } = useApp();
+  const { persona } = useApp();
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const SLIDES_COUNT = 12;
+  const SLIDES_COUNT = 13;
 
   const nextSlide = () => setCurrentSlide((prev) => Math.min(prev + 1, SLIDES_COUNT - 1));
   const prevSlide = () => setCurrentSlide((prev) => Math.max(prev - 1, 0));
@@ -49,7 +47,7 @@ export default function PitchDeckPage() {
     if (navigator.share) {
       navigator.share({
         title: 'WorldFolio X Live Pitch Deck',
-        text: 'Check out WorldFolio X – Local to Global Intelligent Portfolio',
+        text: 'Check out WorldFolio X – Local to Global Intelligent Portfolio Strategy',
         url: window.location.href,
       }).catch(() => {});
     } else {
@@ -62,7 +60,7 @@ export default function PitchDeckPage() {
     <main className="h-screen w-screen bg-slate-950 text-white overflow-hidden relative flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950 font-sans">
       <Toaster position="top-right" />
 
-      {/* Floating Presentation Top Header Bar */}
+      {/* Presentation Top Header Bar */}
       <header className="z-30 w-full glass-panel border-b border-white/10 px-4 sm:px-8 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <Link href="/" className="flex items-center space-x-2 group">
@@ -76,11 +74,11 @@ export default function PitchDeckPage() {
             </span>
           </Link>
           <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono font-bold">
-            Interactive Pitch Deck
+            Slide Deck (13 Slides)
           </span>
         </div>
 
-        {/* Live Timer & Share Button */}
+        {/* Live Timer & Share */}
         <div className="flex items-center space-x-3">
           <div className="hidden sm:block">
             <BuildTimer />
@@ -97,21 +95,22 @@ export default function PitchDeckPage() {
 
       {/* Main Slide Content Stage */}
       <div className="flex-1 relative flex items-center justify-center p-4 sm:p-8">
-        {/* Slide 1: Title Slide */}
+        
+        {/* Slide 1: Title */}
         {currentSlide === 0 && (
           <div className="max-w-4xl w-full text-center space-y-6 animate-in fade-in zoom-in-95 duration-300">
             <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold">
               <Sparkles className="w-4 h-4 animate-spin" />
-              <span>WorldFolio X Presentation • Built in 90 Mins</span>
+              <span>Slide 01 • Built in 90 Minutes</span>
             </div>
             <h1 className="text-5xl sm:text-7xl font-black tracking-tight text-white leading-none">
               WorldFolio <span className="gradient-text-neon">X</span>
             </h1>
-            <p className="text-xl sm:text-2xl font-bold text-emerald-400 font-mono">
-              Local to Global Intelligent Portfolio Engine
+            <p className="text-xl sm:text-2xl font-bold text-emerald-400">
+              स्थानिक ते जागतिकः जगातील पहिले इंटेलिजेंट पोर्टफोलिओ इंजिन जे तुमची ओळख ग्लोबल करते.
             </p>
-            <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-              The world's first AI-powered portfolio that automatically personalizes language, currency, attire, theme, and pricing for every visitor on Earth.
+            <p className="text-slate-400 text-xs sm:text-sm font-mono tracking-widest uppercase">
+              LOCAL TO GLOBAL INTELLIGENT PORTFOLIO
             </p>
 
             <div className="pt-6 flex justify-center">
@@ -126,284 +125,308 @@ export default function PitchDeckPage() {
           </div>
         )}
 
-        {/* Slide 2: The Problem */}
+        {/* Slide 2: The Vision */}
         {currentSlide === 1 && (
-          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
+          <div className="max-w-4xl w-full space-y-8 text-center animate-in fade-in slide-in-from-right-4 duration-300">
             <div className="space-y-2">
-              <span className="text-xs font-mono text-red-400 font-bold uppercase tracking-wider">Slide 02 • The Gap</span>
-              <h2 className="text-4xl font-extrabold text-white">The Problem With Traditional Portfolios</h2>
-              <p className="text-slate-400 text-sm">Why 90% of traditional developer resumes fail to convert local or international clients.</p>
+              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Slide 02 • Vision</span>
+              <h2 className="text-5xl font-extrabold text-white">The Vision</h2>
+              <div className="w-24 h-1.5 bg-emerald-500 mx-auto rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="p-6 rounded-3xl glass-panel border border-red-500/30 space-y-3">
-                <div className="text-2xl font-bold text-red-400 font-mono">01. Language Barrier</div>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  Traditional resumes are static in English. Local Indian village clients or non-English enterprises disengage within 5 seconds.
-                </p>
-              </div>
-              <div className="p-6 rounded-3xl glass-panel border border-red-500/30 space-y-3">
-                <div className="text-2xl font-bold text-red-400 font-mono">02. Cultural Disconnect</div>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  A formal corporate suit intimidates local shopkeepers, while casual hoodies lose Silicon Valley enterprise deals.
-                </p>
-              </div>
-              <div className="p-6 rounded-3xl glass-panel border border-red-500/30 space-y-3">
-                <div className="text-2xl font-bold text-red-400 font-mono">03. Static Currency & Pricing</div>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  Showing prices in USD frightens Indian clients, while asking INR confuses international clients.
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Slide 3: The Solution */}
-        {currentSlide === 2 && (
-          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Slide 03 • The Breakthrough</span>
-              <h2 className="text-4xl font-extrabold text-white">The WorldFolio X Solution</h2>
-              <p className="text-slate-400 text-sm">Hyper-adaptation in under 2 seconds based on visitor IP geolocation and dialect.</p>
-            </div>
-
-            <div className="p-8 rounded-3xl glass-panel border border-emerald-500/50 space-y-6 bg-emerald-950/20">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-                <div className="p-4 rounded-2xl bg-slate-900/80 border border-emerald-500/30">
-                  <div className="text-2xl">🌐</div>
-                  <div className="text-xs font-bold text-white mt-1">50+ Languages</div>
-                  <div className="text-[10px] text-slate-400">Real-time AI Fallback</div>
-                </div>
-                <div className="p-4 rounded-2xl bg-slate-900/80 border border-emerald-500/30">
-                  <div className="text-2xl">👔</div>
-                  <div className="text-xs font-bold text-white mt-1">Geo-Adaptive Attire</div>
-                  <div className="text-[10px] text-slate-400">Traditional / Suit / Casual</div>
-                </div>
-                <div className="p-4 rounded-2xl bg-slate-900/80 border border-emerald-500/30">
-                  <div className="text-2xl">💳</div>
-                  <div className="text-xs font-bold text-white mt-1">Local Payments</div>
-                  <div className="text-[10px] text-slate-400">UPI QR & Stripe</div>
-                </div>
-                <div className="p-4 rounded-2xl bg-slate-900/80 border border-emerald-500/30">
-                  <div className="text-2xl">🗣️</div>
-                  <div className="text-xs font-bold text-white mt-1">Voice AI Greeting</div>
-                  <div className="text-[10px] text-slate-400">City-specific speech</div>
-                </div>
-              </div>
-
-              <div className="p-4 rounded-2xl bg-slate-900 text-xs text-emerald-300 font-mono text-center border border-emerald-500/30">
-                🚀 Result: +250% Increase in Visitor-to-Client Conversion Rate
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Slide 4: Key Innovation Grid */}
-        {currentSlide === 3 && (
-          <div className="max-w-4xl w-full space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-            <div className="space-y-1">
-              <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Slide 04 • Features</span>
-              <h2 className="text-3xl font-extrabold text-white">25+ Hyper-Adaptive Innovations</h2>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
-              {[
-                { title: 'Geo Avatar Switch', desc: 'Kurta for villages, suit for US enterprise' },
-                { title: 'AI Video Talking Head', desc: 'Synthesized voice welcoming visitor by city' },
-                { title: 'Local Trust Map', desc: 'Interactive client nodes near visitor' },
-                { title: 'Voice Control Engine', desc: 'Speech navigation in 10+ languages' },
-                { title: 'Offline Lite Mode', desc: 'Auto 2G/3G ultra-fast minimalist layout' },
-                { title: 'Auto PDF Resume', desc: 'Instant localized resume download' },
-                { title: 'Konami 8-Bit Mode', desc: 'Secret retro village theme trigger' },
-                { title: '3D AR Business Card', desc: 'vCard flip card with QR Code' },
-                { title: 'Competitor Matrix', desc: 'Live comparison against static resumes' },
-              ].map((item, idx) => (
-                <div key={idx} className="p-4 rounded-2xl glass-panel border border-white/10 space-y-1">
-                  <div className="font-bold text-emerald-400">{item.title}</div>
-                  <div className="text-slate-400 text-[11px]">{item.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Slide 5: How It Works */}
-        {currentSlide === 4 && (
-          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300 text-center">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-blue-400 font-bold uppercase tracking-wider">Slide 05 • Architecture</span>
-              <h2 className="text-4xl font-extrabold text-white">How WorldFolio X Automates Personalization</h2>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-8 rounded-3xl glass-panel border border-white/10">
-              <div className="p-4 rounded-2xl bg-slate-900 border border-emerald-500/30 space-y-1 w-full sm:w-1/4">
-                <div className="text-lg font-bold text-emerald-400 font-mono">1. Detect</div>
-                <p className="text-[11px] text-slate-300">IP Geolocation & navigator.language</p>
-              </div>
-              <div className="hidden sm:block text-slate-500 font-bold">→</div>
-              <div className="p-4 rounded-2xl bg-slate-900 border border-blue-500/30 space-y-1 w-full sm:w-1/4">
-                <div className="text-lg font-bold text-blue-400 font-mono">2. Adapt</div>
-                <p className="text-[11px] text-slate-300">Selects persona, avatar, theme & dictionary</p>
-              </div>
-              <div className="hidden sm:block text-slate-500 font-bold">→</div>
-              <div className="p-4 rounded-2xl bg-slate-900 border border-orange-500/30 space-y-1 w-full sm:w-1/4">
-                <div className="text-lg font-bold text-orange-400 font-mono">3. Render</div>
-                <p className="text-[11px] text-slate-300">Sub-50ms SSR & client-side AI fallback</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Slide 6: Tech Stack */}
-        {currentSlide === 5 && (
-          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-purple-400 font-bold uppercase tracking-wider">Slide 06 • Stack</span>
-              <h2 className="text-4xl font-extrabold text-white">Modern Tech Stack</h2>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {['Next.js 14 App Router', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Web Speech API', 'Stripe & UPI QR', 'Prisma SQLite/Postgres', 'PWA Offline Sync'].map((tech, idx) => (
-                <div key={idx} className="p-4 rounded-2xl glass-panel border border-white/10 text-center text-xs font-mono font-bold text-white hover:border-emerald-500 transition-colors">
-                  ⚡ {tech}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Slide 7: Market Opportunity */}
-        {currentSlide === 6 && (
-          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300 text-center">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Slide 07 • Market</span>
-              <h2 className="text-4xl font-extrabold text-white">Target Market Potential</h2>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="p-6 rounded-3xl glass-panel border border-emerald-500/40 space-y-2">
-                <div className="text-4xl font-extrabold text-emerald-400 font-mono">85%</div>
-                <h4 className="text-sm font-bold text-white">Local Village Businesses</h4>
-                <p className="text-xs text-slate-400">Farmers, shopkeepers, local artisans in rural hubs.</p>
-              </div>
-              <div className="p-6 rounded-3xl glass-panel border border-blue-500/40 space-y-2">
-                <div className="text-4xl font-extrabold text-blue-400 font-mono">65%</div>
-                <h4 className="text-sm font-bold text-white">National Startups</h4>
-                <p className="text-xs text-slate-400">Tech startups in Bengaluru, Mumbai & Delhi.</p>
-              </div>
-              <div className="p-6 rounded-3xl glass-panel border border-purple-500/40 space-y-2">
-                <div className="text-4xl font-extrabold text-purple-400 font-mono">45%</div>
-                <h4 className="text-sm font-bold text-white">International SaaS</h4>
-                <p className="text-xs text-slate-400">Enterprise clients in North America & Europe.</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Slide 8: Monetization */}
-        {currentSlide === 7 && (
-          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Slide 08 • Pricing</span>
-              <h2 className="text-4xl font-extrabold text-white">Geo-Smart Pricing Streams</h2>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="p-6 rounded-3xl glass-panel border border-white/10 space-y-3">
-                <h4 className="text-lg font-bold text-white">स्थानिक टियर</h4>
-                <div className="text-3xl font-extrabold text-emerald-400 font-mono">₹3,999</div>
-                <p className="text-xs text-slate-300">Village shopkeepers & local business apps.</p>
-              </div>
-              <div className="p-6 rounded-3xl glass-panel border border-emerald-400 bg-emerald-950/20 space-y-3">
-                <h4 className="text-lg font-bold text-white">नॅशनल टियर</h4>
-                <div className="text-3xl font-extrabold text-emerald-400 font-mono">₹14,999</div>
-                <p className="text-xs text-slate-300">Indian startups & high-growth unicorns.</p>
-              </div>
-              <div className="p-6 rounded-3xl glass-panel border border-white/10 space-y-3">
-                <h4 className="text-lg font-bold text-white">इंटरनॅशनल टियर</h4>
-                <div className="text-3xl font-extrabold text-emerald-400 font-mono">$49 / hr</div>
-                <p className="text-xs text-slate-300">Global enterprise cloud & AI contracts.</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Slide 9: Demo / Live Proof */}
-        {currentSlide === 8 && (
-          <div className="max-w-4xl w-full space-y-6 animate-in fade-in slide-in-from-right-4 duration-300 text-center">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Slide 09 • Live Proof</span>
-              <h2 className="text-4xl font-extrabold text-white">Live Portfolio Adaptation Preview</h2>
-            </div>
-
-            <div className="aspect-video rounded-3xl overflow-hidden glass-panel border border-emerald-500/50 p-2 shadow-2xl relative">
-              <iframe
-                src="/"
-                className="w-full h-full rounded-2xl border-0"
-                title="WorldFolio X Live Preview"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Slide 10: About Developer */}
-        {currentSlide === 9 && (
-          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-indigo-400 font-bold uppercase tracking-wider">Slide 10 • Developer</span>
-              <h2 className="text-4xl font-extrabold text-white">Architect: Dnyaneshwar</h2>
-            </div>
-
-            <div className="p-8 rounded-3xl glass-panel border border-white/10 flex flex-col sm:flex-row items-center gap-8">
-              <img
-                src={persona.avatarUrl}
-                alt="Dnyaneshwar"
-                className="w-36 h-36 rounded-2xl object-cover border-2 border-emerald-400 shadow-xl"
-              />
-              <div className="space-y-3 flex-1">
-                <h3 className="text-2xl font-bold text-white">"I build fast. I build smart."</h3>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  Elite fullstack & AI architect specializing in ultra-fast execution, zero-cls accessible UX, and hyper-adaptive web platforms. Built WorldFolio X in under 90 minutes.
-                </p>
-                <div className="flex items-center space-x-4 text-xs font-mono text-emerald-400 pt-2">
-                  <span>🚀 85+ Projects</span>
-                  <span>⚡ 90-Min Epoch</span>
-                  <span>🌍 Global Reach</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Slide 11: Call To Action */}
-        {currentSlide === 10 && (
-          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300 text-center">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-orange-400 font-bold uppercase tracking-wider">Slide 11 • Action</span>
-              <h2 className="text-4xl font-extrabold text-white">Experience WorldFolio X Live</h2>
-            </div>
-
-            <div className="p-8 rounded-3xl glass-panel border border-emerald-500/50 max-w-md mx-auto space-y-6 shadow-2xl">
-              {/* QR Code Container */}
-              <div className="p-4 bg-white rounded-2xl w-48 h-48 mx-auto flex items-center justify-center shadow-xl">
-                <svg className="w-40 h-40" viewBox="0 0 100 100">
-                  <path fill="#000" d="M0,0 h30 v30 h-30 z M40,0 h20 v10 h-20 z M70,0 h30 v30 h-30 z M10,10 h10 v10 h-10 z M80,10 h10 v10 h-10 z M0,40 h10 v20 h-10 z M20,40 h30 v10 h-30 z M60,40 h40 v30 h-40 z M0,70 h30 v30 h-30 z M10,80 h10 v10 h-10 z M40,80 h20 v20 h-20 z M70,80 h30 v20 h-30 z" />
-                </svg>
-              </div>
-              <p className="text-xs font-mono text-slate-300">
-                Scan QR Code to open WorldFolio X on your phone & watch it greet you in your language!
+            <div className="p-8 rounded-3xl glass-panel border border-emerald-500/40 bg-emerald-950/20 max-w-2xl mx-auto shadow-2xl">
+              <p className="text-xl sm:text-2xl font-medium text-slate-200 leading-relaxed">
+                प्रत्येक डेव्हलपरला स्थानिक गावपातळीपासून ते आंतरराष्ट्रीय मार्केटपर्यंत जोडणारी आधुनिक प्रणाली.
               </p>
             </div>
           </div>
         )}
 
-        {/* Slide 12: Thank You / Contact */}
+        {/* Slide 3: The Gap We Bridge */}
+        {currentSlide === 2 && (
+          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-red-400 font-bold uppercase tracking-wider">Slide 03 • Market Gap</span>
+              <h2 className="text-4xl font-extrabold text-white">The Gap We Bridge</h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="p-6 rounded-3xl glass-panel border border-red-500/30 space-y-3">
+                <div className="p-3 rounded-2xl bg-red-500/20 text-red-400 w-fit">
+                  <Globe className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white">संवादातील अडथळा</h3>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  स्थानिक भाषा आणि जागतिक बिझनेस लँग्वेज यातील दरीमुळे अनेक टॅレントेड डेव्हलपर्स मागे पडतात.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-3xl glass-panel border border-emerald-500/50 bg-emerald-950/20 space-y-3">
+                <div className="p-3 rounded-2xl bg-emerald-500/20 text-emerald-400 w-fit">
+                  <Sparkles className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white">WorldFolio X सोल्यूशन</h3>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  ऑटो-डिटेक्टिंग मल्टी-लँग्वेज आणि जिओ-अडॅप्टिव्ह UI द्वारे जगातील प्रत्येक युजरला त्याच्या भाषेत प्रेझेंटेशन.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 4: Impact Metrics */}
+        {currentSlide === 3 && (
+          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Slide 04 • Impact</span>
+              <h2 className="text-4xl font-extrabold text-white">Impact Metrics</h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+              <div className="space-y-4">
+                <div className="text-6xl sm:text-7xl font-black text-emerald-400 font-mono">250%</div>
+                <h3 className="text-2xl font-bold text-white">कन्व्हर्जन दरात वाढ</h3>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  स्थानिक भाषेत माहिती दिल्याने युजरचा विश्वास वाढतो आणि प्रोजेक्ट मिळण्याची शक्यता २.५ पटीने वाढते.
+                </p>
+              </div>
+
+              <div className="aspect-video rounded-3xl glass-panel border border-white/10 p-6 flex flex-col justify-end bg-slate-900/80 shadow-2xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+                <div className="relative z-10 space-y-1">
+                  <span className="text-xs font-mono text-emerald-400 font-bold">Workspace Ecosystem</span>
+                  <h4 className="text-lg font-bold text-white">Professional Tech Workspace</h4>
+                  <p className="text-xs text-slate-400">Optimized for high-trust client conversions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 5: The Polyglot Engine */}
+        {currentSlide === 4 && (
+          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-blue-400 font-bold uppercase tracking-wider">Slide 05 • AI Engine</span>
+              <h2 className="text-4xl font-extrabold text-white">The Polyglot Engine</h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="p-6 rounded-3xl glass-panel border border-white/10 space-y-3">
+                <div className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold w-fit">
+                  मराठी & हिंदी
+                </div>
+                <h3 className="text-lg font-bold text-white">स्थानिक आपुलकी</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  स्थानिक गाव आणि जिल्हा स्तरावरील क्लायंट्ससाठी विश्वासार्ह संवाद आणि आपुलकीचे दर्शन.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-3xl glass-panel border border-white/10 space-y-3">
+                <div className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-mono font-bold w-fit">
+                  English & More
+                </div>
+                <h3 className="text-lg font-bold text-white">Global Reach</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  आंतरराष्ट्रीय स्तरावरील प्रोफेशनलिझम आणि हाय-टेक सादरीकरण (German, Spanish ready).
+                </p>
+              </div>
+
+              <div className="p-6 rounded-3xl glass-panel border border-emerald-500/50 bg-emerald-950/20 space-y-3">
+                <div className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-mono font-bold w-fit">
+                  Auto-Detection
+                </div>
+                <h3 className="text-lg font-bold text-white">Auto Personalization</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  युजरच्या लोकेशननुसार भाषा आणि करन्सी आपोआप बदलण्याची इंटेलिजेंट सिस्टीम.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 6: Geo-Smart Pricing */}
+        {currentSlide === 5 && (
+          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider">Slide 06 • Pricing</span>
+              <h2 className="text-4xl font-extrabold text-white">Geo-Smart Pricing</h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="p-6 rounded-3xl glass-panel border border-white/10 space-y-3">
+                <h3 className="text-lg font-bold text-white">स्थानिक टियर</h3>
+                <div className="text-3xl font-extrabold text-emerald-400 font-mono">₹३,९९९</div>
+                <p className="text-xs text-slate-300">गाव आणि तालुका व्यापारी</p>
+              </div>
+
+              <div className="p-6 rounded-3xl glass-panel border border-emerald-400 bg-emerald-950/20 space-y-3">
+                <h3 className="text-lg font-bold text-white">नॅशनल टियर</h3>
+                <div className="text-3xl font-extrabold text-emerald-400 font-mono">₹१४,९९९</div>
+                <p className="text-xs text-slate-300">भारतीय स्टार्टअप्स</p>
+              </div>
+
+              <div className="p-6 rounded-3xl glass-panel border border-white/10 space-y-3">
+                <h3 className="text-lg font-bold text-white">इंटरनॅशनल टियर</h3>
+                <div className="text-3xl font-extrabold text-emerald-400 font-mono">$49 / $30</div>
+                <p className="text-xs text-slate-300">प्रति तास (ग्लोबल क्लायंट्स)</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 7: Scaling Globally */}
+        {currentSlide === 6 && (
+          <div className="max-w-4xl w-full space-y-8 text-center animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Slide 07 • Scale</span>
+              <h2 className="text-4xl font-extrabold text-white">Scaling Globally</h2>
+            </div>
+
+            <div className="p-8 rounded-3xl glass-panel border border-emerald-500/40 bg-emerald-950/20 max-w-3xl mx-auto space-y-4 shadow-2xl">
+              <p className="text-xl sm:text-2xl font-bold text-white leading-relaxed">
+                जगात आजवर कोणीही न बनवलेली ही सिस्टीम तुमच्या कौशल्याला सीमा ओलांडून जगभर पोहचवते.
+              </p>
+              <p className="text-sm text-slate-300 leading-relaxed pt-2 border-t border-white/10">
+                स्थानिक टच (Local Touch) राखून जागतिक प्रभाव (Global Impact) पाडणे हेच या पोर्टफोलिओचे मुख्य वैशिष्ट्य आहे.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 8: Target Market Potential */}
+        {currentSlide === 7 && (
+          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-purple-400 font-bold uppercase tracking-wider">Slide 08 • Market</span>
+              <h2 className="text-4xl font-extrabold text-white">Target Market Potential</h2>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <div className="flex justify-between text-xs font-bold text-white mb-1">
+                  <span>Local Businesses</span>
+                  <span className="text-emerald-400">85% Reach</span>
+                </div>
+                <div className="w-full bg-slate-900 rounded-full h-4 overflow-hidden border border-white/10">
+                  <div className="bg-emerald-500 h-full rounded-full" style={{ width: '85%' }} />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between text-xs font-bold text-white mb-1">
+                  <span>National Startups</span>
+                  <span className="text-blue-400">65% Reach</span>
+                </div>
+                <div className="w-full bg-slate-900 rounded-full h-4 overflow-hidden border border-white/10">
+                  <div className="bg-blue-500 h-full rounded-full" style={{ width: '65%' }} />
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between text-xs font-bold text-white mb-1">
+                  <span>International SaaS</span>
+                  <span className="text-purple-400">45% Reach</span>
+                </div>
+                <div className="w-full bg-slate-900 rounded-full h-4 overflow-hidden border border-white/10">
+                  <div className="bg-purple-500 h-full rounded-full" style={{ width: '45%' }} />
+                </div>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-400 font-mono text-center pt-2">
+              WorldFolio X मुळे मार्केट कव्हरेजमध्ये लक्षणीय वाढ होते.
+            </p>
+          </div>
+        )}
+
+        {/* Slide 9: Revenue Streams */}
+        {currentSlide === 8 && (
+          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300 text-center">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Slide 09 • Revenue</span>
+              <h2 className="text-4xl font-extrabold text-white">Revenue Streams</h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="p-6 rounded-3xl glass-panel border border-emerald-500/40 space-y-2">
+                <div className="text-4xl font-bold text-emerald-400 font-mono">30%</div>
+                <h3 className="text-lg font-bold text-white">Local Projects</h3>
+                <p className="text-xs text-slate-400">गाव आणि तालुका व्यावसायिक</p>
+              </div>
+
+              <div className="p-6 rounded-3xl glass-panel border border-blue-500/40 space-y-2">
+                <div className="text-4xl font-bold text-blue-400 font-mono">40%</div>
+                <h3 className="text-lg font-bold text-white">National Tech</h3>
+                <p className="text-xs text-slate-400">भारतीय तंत्रज्ञान स्टार्टअप्स</p>
+              </div>
+
+              <div className="p-6 rounded-3xl glass-panel border border-amber-500/40 space-y-2">
+                <div className="text-4xl font-bold text-amber-400 font-mono">30%</div>
+                <h3 className="text-lg font-bold text-white">International SaaS</h3>
+                <p className="text-xs text-slate-400">जागतिक क्लायंट्स</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 10: Deployment Roadmap */}
+        {currentSlide === 9 && (
+          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300 text-center">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-blue-400 font-bold uppercase tracking-wider">Slide 10 • Roadmap</span>
+              <h2 className="text-4xl font-extrabold text-white">Deployment Roadmap</h2>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="p-4 rounded-2xl glass-panel border border-white/10 space-y-1">
+                <div className="text-xs font-mono font-bold text-emerald-400">Min 0–20</div>
+                <h4 className="text-sm font-bold text-white">AI Engine & UI Setup</h4>
+              </div>
+
+              <div className="p-4 rounded-2xl glass-panel border border-white/10 space-y-1">
+                <div className="text-xs font-mono font-bold text-blue-400">Min 20–50</div>
+                <h4 className="text-sm font-bold text-white">Language Matrix & Logic</h4>
+              </div>
+
+              <div className="p-4 rounded-2xl glass-panel border border-white/10 space-y-1">
+                <div className="text-xs font-mono font-bold text-amber-400">Min 50–70</div>
+                <h4 className="text-sm font-bold text-white">Geo-Detection Integration</h4>
+              </div>
+
+              <div className="p-4 rounded-2xl glass-panel border border-emerald-500/50 bg-emerald-950/20 space-y-1">
+                <div className="text-xs font-mono font-bold text-emerald-300">Min 70–90</div>
+                <h4 className="text-sm font-bold text-white">Live Global Deployment</h4>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 11: Quote */}
+        {currentSlide === 10 && (
+          <div className="max-w-4xl w-full space-y-8 text-center animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Slide 11 • Quote</span>
+            </div>
+
+            <div className="p-10 rounded-3xl glass-panel border border-emerald-500/40 bg-emerald-950/20 max-w-2xl mx-auto space-y-4 shadow-2xl">
+              <p className="text-2xl sm:text-3xl font-extrabold text-white leading-relaxed italic">
+                "तंत्रज्ञान जेव्हा भाषेचे आणि भूगोलाचे अडथळे तोडते, तेव्हा खरी प्रगती सुरू होते."
+              </p>
+              <p className="text-sm font-mono text-emerald-400 font-bold">
+                — WorldFolio X Team
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 12: Contact Us */}
         {currentSlide === 11 && (
           <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300 text-center">
             <div className="space-y-2">
-              <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Slide 12 • Contact</span>
-              <h2 className="text-5xl font-extrabold text-white">Thank You!</h2>
-              <p className="text-slate-300 text-base">Your global journey starts today.</p>
+              <span className="text-xs font-mono text-orange-400 font-bold uppercase tracking-wider">Slide 12 • Contact</span>
+              <h2 className="text-5xl font-extrabold text-white">Contact Us</h2>
+              <p className="text-slate-300 text-base">तुमचा जागतिक प्रवास आजच सुरू करा.</p>
             </div>
 
             <div className="p-8 rounded-3xl glass-panel border border-white/10 max-w-xl mx-auto space-y-6">
@@ -419,18 +442,35 @@ export default function PitchDeckPage() {
                 </span>
               </div>
 
-              <div className="pt-2">
-                <Link
-                  href="/"
-                  className="px-8 py-3.5 rounded-2xl bg-emerald-500 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg hover:bg-emerald-400 transition-colors inline-flex items-center space-x-2"
-                >
-                  <span>Launch Live WorldFolio X App</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+              <div className="text-xs font-mono text-slate-400 pt-2 border-t border-white/10">
+                BUILT IN 90 MINUTES
               </div>
             </div>
           </div>
         )}
+
+        {/* Slide 13: Image Sources */}
+        {currentSlide === 12 && (
+          <div className="max-w-4xl w-full space-y-8 animate-in fade-in slide-in-from-right-4 duration-300 text-center">
+            <div className="space-y-2">
+              <span className="text-xs font-mono text-slate-400 font-bold uppercase tracking-wider">Slide 13 • Attributions</span>
+              <h2 className="text-4xl font-extrabold text-white">Image Sources</h2>
+            </div>
+
+            <div className="p-8 rounded-3xl glass-panel border border-white/10 max-w-xl mx-auto space-y-4 text-xs font-mono text-slate-300 text-left">
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-white/5">
+                <span className="text-emerald-400 font-bold">Source 1:</span> stockcake.com
+              </div>
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-white/5">
+                <span className="text-blue-400 font-bold">Source 2:</span> themeforest.net
+              </div>
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-white/5">
+                <span className="text-amber-400 font-bold">Source 3:</span> vecteezy.com
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
 
       {/* Footer Navigation Bar */}
@@ -440,12 +480,12 @@ export default function PitchDeckPage() {
         </div>
 
         {/* Slide Dots Indicator */}
-        <div className="flex items-center space-x-1.5">
+        <div className="flex items-center space-x-1.5 overflow-x-auto max-w-[50%] py-1">
           {[...Array(SLIDES_COUNT)].map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
+              className={`w-2.5 h-2.5 rounded-full transition-all flex-shrink-0 ${
                 currentSlide === idx ? 'bg-emerald-400 scale-125' : 'bg-slate-700 hover:bg-slate-500'
               }`}
             />
