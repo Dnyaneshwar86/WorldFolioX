@@ -6,7 +6,7 @@ import { useApp } from '@/lib/store';
 import { LANGUAGES } from '@/lib/i18n-dictionary';
 import { PERSONAS } from '@/lib/geo-context';
 import { RegionId } from '@/lib/types';
-import { Globe, Mic, Zap, Sparkles, Moon, Sun, Monitor, Smartphone, Video, Clock, Activity } from 'lucide-react';
+import { Globe, Mic, Zap, Sparkles, Moon, Sun, Monitor, Smartphone, Video, Clock, Activity, QrCode } from 'lucide-react';
 import BuildTimer from './BuildTimer';
 
 export default function Header() {
@@ -81,6 +81,16 @@ export default function Header() {
           >
             <Sparkles className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
             <span className="hidden sm:inline">Pitch Deck</span>
+          </Link>
+
+          {/* QRMenu Pro SaaS Tool Link */}
+          <Link
+            href="/tools/qrmenu"
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-orange-600/30 hover:bg-orange-600/50 text-orange-200 border border-orange-500/40 text-xs font-semibold transition-all hover:shadow-lg hover:shadow-orange-500/20"
+            title="Open QRMenu Pro Live Demo"
+          >
+            <QrCode className="w-3.5 h-3.5 text-orange-400 animate-pulse" />
+            <span className="hidden sm:inline">QRMenu Pro</span>
           </Link>
 
           {/* Live Project Status Board Link */}
