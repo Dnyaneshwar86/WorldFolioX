@@ -21,7 +21,7 @@ export const PROJECTS: ProjectItem[] = [
     tags: ['AI Assistant', 'Civil Engineering', 'EdTech', 'TypeScript', 'Marathi/Hindi'],
     metrics: '🏗️ Active in 50+ Engineering Colleges | 10k+ Queries Solved',
     image: 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&w=800&q=80',
-    liveUrl: 'https://github.com/Dnyaneshwar86/Civil-Diplomaai',
+    liveUrl: 'https://github.com/Dnyaneshwar86/Civil-Diploma-AI',
   },
   {
     id: 'p_devdash',
@@ -43,7 +43,7 @@ export const PROJECTS: ProjectItem[] = [
     tags: ['3D WebGL', 'vCard', 'PWA', 'NFC Sync', 'Tailwind'],
     metrics: '📱 5,000+ Digital Cards Generated | 1-Click Save',
     image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
-    liveUrl: 'https://github.com/Dnyaneshwar86/digital-visiting-card',
+    liveUrl: 'https://dnyaneshwar86.github.io/digital-visiting-card/',
   },
   {
     id: 'p_cricket',
