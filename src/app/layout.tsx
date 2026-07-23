@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   keywords: ['WorldFolio X', 'Adaptive Portfolio', 'AI Resume', 'Next.js 14', 'TypeScript', 'Fullstack Developer', 'Dnyaneshwar'],
   authors: [{ name: 'Dnyaneshwar' }],
   metadataBase: new URL('https://world-folio-x.vercel.app'),
+  verification: {
+    google: 'google1462d9b7f1d00d92',
+  },
   openGraph: {
     title: 'WorldFolio X • Your Local Dev. Global Reach.',
     description: 'World’s first AI-powered intelligent portfolio engine automatically adapting language, attire, theme, and currency.',
@@ -45,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="google1462d9b7f1d00d92" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
