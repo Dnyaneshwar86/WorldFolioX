@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import BuildTimer from '@/components/BuildTimer';
+import { NameLogo } from '@/components/NameLogo';
 import toast, { Toaster } from 'react-hot-toast';
 
 interface MenuItem {
@@ -117,7 +118,7 @@ Total Items: ${menuItems.length}`;
     <main className="min-h-screen bg-slate-950 text-white p-4 sm:p-8 space-y-8 font-sans selection:bg-amber-500 selection:text-slate-950">
       <Toaster position="top-right" />
 
-      {/* Header Banner */}
+      {/* Header Banner with NameLogo */}
       <header className="max-w-6xl mx-auto glass-panel p-4 rounded-3xl border border-amber-500/40 flex flex-wrap items-center justify-between gap-4 shadow-xl">
         <div className="flex items-center space-x-3">
           <Link href="/" className="p-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-amber-500 transition-colors">
@@ -125,12 +126,12 @@ Total Items: ${menuItems.length}`;
           </Link>
           <div>
             <div className="flex items-center space-x-2">
-              <h1 className="text-xl font-extrabold text-white">QRMenu Pro</h1>
+              <NameLogo firstName="QRMENU" secondName="PRO" icon="utensils" accentColor="text-amber-400" />
               <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono font-bold">
                 Live Hotel SaaS Demo
               </span>
             </div>
-            <p className="text-xs text-slate-400 font-mono">Create instant WhatsApp QR menus for local hotels & cafes in 5 mins</p>
+            <p className="text-xs text-slate-400 font-mono mt-1">Create instant WhatsApp QR menus for local hotels & cafes in 5 mins</p>
           </div>
         </div>
 
