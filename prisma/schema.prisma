@@ -1,0 +1,42 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Status {
+  NEW
+  CONTACTED
+  WORKING
+  PENDING
+  COMPLETED
+  ON_HOLD
+  CANCELLED
+}
+
+model Client {
+  id          String    @id @default(cuid())
+  name        String
+  email       String?
+  phone       String?
+  projectType String?
+  message     String
+  status      Status    @default(NEW)
+  token       String    @unique @default(uuid())
+  deadline    DateTime?
+  notes       Note[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  content   String
+  isPublic  Boolean  @default(false)
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
