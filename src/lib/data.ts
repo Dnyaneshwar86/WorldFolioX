@@ -54,7 +54,7 @@ export const PROJECTS: ProjectItem[] = [
     tags: ['React', 'Firebase', 'WebSockets', 'Sports Analytics', 'Local League'],
     metrics: '🏏 Live Stream Scoring for 24+ Teams in Shrigonda',
     image: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=800&q=80',
-    liveUrl: 'https://github.com/Dnyaneshwar86/Shrigonda-Cricket-Arena',
+    liveUrl: 'https://dnyaneshwar86.github.io/Shrigonda-Cricket-Arena/',
   },
   {
     id: 'p_omnipura',
