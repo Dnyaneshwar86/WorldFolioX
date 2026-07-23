@@ -27,9 +27,6 @@ export const GITHUB_REPOS = [
   { name: 'focus.today', role: 'Gamified Deep Focus Timer', tag: 'LocalFirst / PWA', isFlagship: false },
   { name: 'mahaseva', role: 'MahaSeva Digital Citizen Portal', tag: 'GovTech / i18n', isFlagship: false },
   { name: 'starlight', role: 'Cosmic Cyberpunk Design System', tag: 'Tailwind / Glass', isFlagship: false },
-  { name: 'Eklavya-2.0-.-', role: 'Adaptive Learning AI Platform', tag: 'EdTech / AI', isFlagship: false },
-  { name: 'Chrono-hacks2.0', role: 'Hackathon Timer & Sync Console', tag: 'Realtime / Timer', isFlagship: false },
-  { name: 'DNYANESHWARCSC', role: 'Common Service Center Kiosk', tag: 'Citizen Services', isFlagship: false },
 ];
 
 export default function ProjectsShowcase() {
