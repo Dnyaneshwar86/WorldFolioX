@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { QRCodeSVG } from 'qrcode.react';
 import {
   QrCode,
   Utensils,
@@ -102,9 +103,8 @@ export default function QrMenuProToolPage() {
     toast.success('Menu item removed');
   };
 
-  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(
-    `https://wa.me/91${whatsappPhone}?text=Hello%20${encodeURIComponent(hotelName)},%20I%20want%20to%20order%20from%20your%20QRMenu!`
-  )}`;
+  const qrDataUrl = `https://wa.me/91${whatsappPhone}?text=Hello%20${encodeURIComponent(hotelName)},%20I%20want%20to%20order%20from%20your%20QRMenu!`;
+  const fallbackQrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(qrDataUrl)}`;
 
   const handleOrderWhatsapp = () => {
     const text = `Hello *${hotelName}*! I'd like to place an order from your QR Digital Menu:
@@ -296,22 +296,22 @@ Total Items: ${menuItems.length}`;
 
         {/* Right Column: Live Mobile Preview & QR Card */}
         <div className="space-y-6">
-          {/* QR Code Printable Card */}
+          {/* QR Code Printable Card with qrcode.react */}
           <div className="glass-panel p-6 rounded-3xl border border-amber-500/40 space-y-4 text-center shadow-2xl">
             <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-mono font-bold">
               <QrCode className="w-4 h-4" />
               <span>Table Stand QR Code</span>
             </div>
 
-            <div className="bg-white p-4 rounded-2xl w-48 h-48 mx-auto flex items-center justify-center shadow-lg">
-              <img src={qrImageUrl} alt="Hotel QR Menu Code" className="w-full h-full object-contain" />
+            <div className="bg-white p-4 rounded-2xl w-48 h-48 mx-auto flex items-center justify-center shadow-lg border-4 border-amber-500">
+              <QRCodeSVG value={qrDataUrl} size={160} />
             </div>
 
             <p className="text-xs text-slate-300 font-mono">Scan QR with Mobile Camera to order directly on WhatsApp</p>
 
             <div className="flex justify-center space-x-2 font-mono text-xs">
               <a
-                href={qrImageUrl}
+                href={fallbackQrImageUrl}
                 target="_blank"
                 download="qrmenu.png"
                 className="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-amber-500 text-slate-300 hover:text-white transition-colors flex items-center space-x-1.5"
